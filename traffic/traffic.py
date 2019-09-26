@@ -91,3 +91,10 @@ def calc_growth_perc(series, i, lapse=12):
     if i < lapse:
         return None
     return 100 * (series[i] - series[i - lapse]) / series[i - lapse]
+
+def calculate_wlu(df, pax='pax_1_Total*', cargo='Cargo (tonnes)'):
+    """Calculate work load units
+    :param pax: column with passenger data to use
+    :param cargo: column with cargo data to use
+    """
+    return df[pax] + 10 * df[cargo]
