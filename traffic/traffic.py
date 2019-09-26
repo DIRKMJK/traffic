@@ -9,12 +9,21 @@ URL = DOMAIN + "/nl/schiphol-group/pagina/verkeer-en-vervoer-cijfers/"
 TOPICS = ['flights', 'pax_1', 'pax_2', 'pax_3']
 
 
+def is_correct_link(element):
+    """Identify correct download link"""
+    payload = element.get('data-analytics-payload')
+    if not payload:
+        return False
+    return LABEL in payload
+
+
 def download_data():
-    """Download Schiphol traffic data as excel file."""
+    """Download Schiphol Airport traffic data excel file."""
     html = requests.get(URL).text
     soup = bs(html, 'lxml')
-    element = soup.find('a', {'data-analytics-label': 'Maandelijkse Verkeer & Vervoer cijfers 1992 - heden'})
-    url = DOMAIN + element.get('href')
+    for element in [e for e in soup.find_all('a') if is_correct_link(e)]:
+        url = DOMAIN + element.get('href')
+        break
     r = requests.get(url)
     return r.content
 
