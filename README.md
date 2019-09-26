@@ -24,4 +24,7 @@ monthly['index_europe'] = create_index(monthly.flights_Europe)
 # growth perc
 monthly['p_growth_europe'] = [calc_growth_perc(monthly.flights_Europe, i) for i in range(len(monthly))]
 yearly['p_growth_europe'] = [calc_growth_perc(yearly.flights_Europe, i, 1) for i in range(len(yearly))]
+
+# work load units
+yearly['wlu'] = calculate_wlu(yearly)
 ```

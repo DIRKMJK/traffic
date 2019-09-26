@@ -49,8 +49,8 @@ def clean_data(path='../data/data.xlsx', subset=None):
     df = pd.read_excel(path, skiprows=8)
     df = df[pd.notnull(df.Month)]
     df = df.rename(columns={
-        df.columns[-2]: 'Cargo (tonnes)',
-        df.columns[-1]: 'Mail (tonnes)'
+        df.columns[19]: 'Cargo (tonnes)',
+        df.columns[20]: 'Mail (tonnes)'
     })
     df['Year'] = df.Year.replace(to_replace=None, method='ffill')
     df.index = df.Year.map(str) + df.Month
