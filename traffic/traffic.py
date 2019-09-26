@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup as bs
 
 DOMAIN = "https://www.schiphol.nl"
 URL = DOMAIN + "/nl/schiphol-group/pagina/verkeer-en-vervoer-cijfers/"
+LABEL = 'Maandelijkse Verkeer & Vervoer cijfers 1992 - heden'
 TOPICS = ['flights', 'pax_1', 'pax_2', 'pax_3']
 
 
